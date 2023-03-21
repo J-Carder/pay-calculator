@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {useEffect, useState} from 'react'
+import {useEffect, useState} from 'preact/hooks'
 import { InputSlider } from './components/InputSlider'
 
 const TimeSection = styled.div`

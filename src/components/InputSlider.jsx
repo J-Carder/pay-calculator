@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import {useEffect, useState} from 'react'
+import {useEffect, useState} from 'preact/hooks'
 
 const StyledSlider = styled.input`
     width: 200px;
@@ -21,7 +21,7 @@ const StyledNumberInput = styled.input`
     }
 
     ${props => props.dollar ? " \
-        background-image: url(\"../../public/dollar.svg\"); \
+        background-image: url(\"/dollar.svg\"); \
         background-position: left center; \
         background-repeat: no-repeat no-repeat; \
         padding-left: 10px; \
