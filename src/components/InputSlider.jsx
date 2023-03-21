@@ -10,6 +10,15 @@ const StyledSlider = styled.input`
 const StyledContainer = styled.div`
     display: flex;
     justify-content: space-between;
+    :nth-child(even) {
+        background-color: rgb(219, 219, 219);
+    }
+
+    :hover {
+        background-color: #cbcbcb;
+    }
+
+    padding: 2px;
 `
 
 const StyledNumberInput = styled.input`
