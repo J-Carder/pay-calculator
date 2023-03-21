@@ -1,6 +1,26 @@
-import styled from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 import {useEffect, useState} from 'preact/hooks'
 import { InputSlider } from './components/InputSlider'
+
+
+
+
+
+
+
+
+
+
+
+
+const GlobalStyle = createGlobalStyle`
+
+  body {
+    box-sizing: border-box;
+    transition: 1s background-color;
+    background-color: ${props => props.value > 60000 ? "#C7E5DF" : props.value > 30000 ? "#FAF0DC" : "#F4BEBE" };
+  }
+`
 
 const TimeSection = styled.div`
   border: 5px solid black;
@@ -163,6 +183,7 @@ export const App = () => {
 
   return (
     <>
+      <GlobalStyle value={annually} />
       <Wrapper>
 
         <h1>Pay Calculator</h1>
