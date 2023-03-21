@@ -2,17 +2,6 @@ import styled, { createGlobalStyle } from 'styled-components'
 import {useEffect, useState} from 'preact/hooks'
 import { InputSlider } from './components/InputSlider'
 
-
-
-
-
-
-
-
-
-
-
-
 const GlobalStyle = createGlobalStyle`
 
   body {
@@ -50,7 +39,7 @@ const StyledFooter = styled.footer`
 
 const Wrapper = styled.div`
   margin: 0 auto;
-  width: 600px;
+  max-width: 600px;
   font-family: sans-serif;
 `
 

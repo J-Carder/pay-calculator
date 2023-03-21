@@ -2,7 +2,7 @@ import styled from "styled-components"
 import {useEffect, useState} from 'preact/hooks'
 
 const StyledSlider = styled.input`
-    width: 200px;
+    max-width: 200px;
     position: relative;
     top: 4px;
 `
@@ -10,6 +10,12 @@ const StyledSlider = styled.input`
 const StyledContainer = styled.div`
     display: flex;
     justify-content: space-between;
+
+    flex-wrap: wrap;
+    @media (max-width: 355px) {
+        justify-content: end;
+    }
+
     :nth-child(even) {
         background-color: rgb(219, 219, 219);
     }
@@ -47,6 +53,13 @@ const StyledP = styled.p`
 
 const StyledInputContainer = styled.div`
     margin-top: 5px;
+    text-align: right;
+    display: flex;
+    flex-direction: row;
+
+    @media (max-width: 650px) {
+        flex-direction: column;
+    }
 `
 
 export const InputSlider = ({ name, min, max, sliderMin, sliderMax, sliderStep, value, valueChange, className, dollar, decimal}) => {
