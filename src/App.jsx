@@ -181,15 +181,15 @@ export const App = () => {
       <GlobalStyle value={annually} />
       <Wrapper>
 
-        <h1>Pay Calculator</h1>
+        <h1>Pay Calculator &#128184;</h1>
 
-        <CenteredH2>Time</CenteredH2>
+        <CenteredH2>Time &#128338;</CenteredH2>
         <TimeSection>
           <InputSlider name={HOURS_PER_DAY_NAME} min={1} max={HOURS_IN_DAY} sliderMin={1} sliderMax={HOURS_IN_DAY} valueChange={setTime} value={hoursPerDay} />
           <InputSlider name={DAYS_PER_WEEK} min={1} max={DAYS_IN_WEEK} sliderMin={1} sliderMax={DAYS_IN_WEEK} valueChange={setTime} value={daysPerWeek}/>
         </TimeSection>
 
-        <CenteredH2>Pay</CenteredH2>
+        <CenteredH2>Pay &#128176;</CenteredH2>
         <PaySection>
           <InputSlider name={HOURLY_NAME} dollar sliderMax={HOURLY_SLIDER_MAX} valueChange={setPay} value={hourly}/>
           <InputSlider name={DAILY_NAME} dollar sliderMax={DAILY_SLIDER_MAX} sliderStep={10} valueChange={setPay} value={daily}/>
