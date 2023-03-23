@@ -117,6 +117,16 @@ export const App = () => {
     return Math.round(num * 100) / 100;
   }
 
+  const updateFields = (hoursPerDay, daysPerWeek, hourlyValue) => {
+    setDaily(roundToTwoDecimals(hourlyValue * hoursPerDay));
+    setWeekly(roundToTwoDecimals(hourlyValue * hoursPerDay * daysPerWeek));
+    setBiweekly(roundToTwoDecimals(hourlyValue * hoursPerDay * daysPerWeek * BIWEEKLY_IN_MONTH));
+    setSemimonthly(roundToTwoDecimals(hourlyValue * hoursPerDay * daysPerWeek * (WEEKS_IN_YEAR / SEMIMONTHS_IN_YEAR)));
+    setMonthly(roundToTwoDecimals(hourlyValue * hoursPerDay * daysPerWeek * (WEEKS_IN_YEAR / MONTHS_IN_YEAR)));
+    setQuarterly(roundToTwoDecimals(hourlyValue * hoursPerDay * daysPerWeek * (WEEKS_IN_YEAR / QUARTERS_IN_YEAR)));
+    setAnnually(roundToTwoDecimals(hourlyValue * hoursPerDay * daysPerWeek * WEEKS_IN_YEAR));
+  }
+
   // set all payment fields
   const setPay = (pay, name) => {
     let hourlyValue; 
@@ -148,38 +158,19 @@ export const App = () => {
     }
 
     setHourly(roundToTwoDecimals(hourlyValue));
-    setDaily(roundToTwoDecimals(hourlyValue * hoursPerDay));
-    setWeekly(roundToTwoDecimals(hourlyValue * hoursPerDay * daysPerWeek));
-    setBiweekly(roundToTwoDecimals(hourlyValue * hoursPerDay * daysPerWeek * BIWEEKLY_IN_MONTH));
-    setSemimonthly(roundToTwoDecimals(hourlyValue * hoursPerDay * daysPerWeek * (WEEKS_IN_YEAR / SEMIMONTHS_IN_YEAR)));
-    setMonthly(roundToTwoDecimals(hourlyValue * hoursPerDay * daysPerWeek * (WEEKS_IN_YEAR / MONTHS_IN_YEAR)));
-    setQuarterly(roundToTwoDecimals(hourlyValue * hoursPerDay * daysPerWeek * (WEEKS_IN_YEAR / QUARTERS_IN_YEAR)));
-    setAnnually(roundToTwoDecimals(hourlyValue * hoursPerDay * daysPerWeek * WEEKS_IN_YEAR));
+    updateFields(hoursPerDay, daysPerWeek, hourlyValue);
   }
-
 
   const setTime = (time, name) => {
 
     switch (name) {
       case HOURS_PER_DAY_NAME:
         setHoursPerDay(time);
-        setDaily(hourly * time);
-        setWeekly(hourly * time * daysPerWeek);
-        setBiweekly(hourly * time * daysPerWeek * BIWEEKLY_IN_MONTH);
-        setSemimonthly(hourly * time * daysPerWeek * (WEEKS_IN_YEAR / SEMIMONTHS_IN_YEAR));
-        setMonthly(hourly * time * daysPerWeek * (WEEKS_IN_YEAR / MONTHS_IN_YEAR));
-        setQuarterly(hourly * time * daysPerWeek * (WEEKS_IN_YEAR / QUARTERS_IN_YEAR));
-        setAnnually(hourly * time * daysPerWeek * WEEKS_IN_YEAR);
+        updateFields(time, daysPerWeek, hourly);
         break;
       case DAYS_PER_WEEK:
         setDaysPerWeek(time);
-        setDaily(hourly * hoursPerDay);
-        setWeekly(hourly * hoursPerDay * time);
-        setBiweekly(hourly * hoursPerDay * time * BIWEEKLY_IN_MONTH);
-        setSemimonthly(hourly * hoursPerDay * time * (WEEKS_IN_YEAR / SEMIMONTHS_IN_YEAR));
-        setMonthly(hourly * hoursPerDay * time * (WEEKS_IN_YEAR / MONTHS_IN_YEAR));
-        setQuarterly(hourly * hoursPerDay * time * (WEEKS_IN_YEAR / QUARTERS_IN_YEAR));
-        setAnnually(hourly * hoursPerDay * time * WEEKS_IN_YEAR);
+        updateFields(hoursPerDay, time, hourly)
         break;
     }
   }
