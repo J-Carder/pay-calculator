@@ -6,9 +6,24 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     box-sizing: border-box;
-    transition: 1s background-color;
-    background-color: ${props => props.value > 60000 ? "#C7E5DF" : props.value > 30000 ? "#FAF0DC" : "#F4BEBE" };
+    /* background-color: ${props => props.value > 40000 ? "#C7E5DF" : props.value > 20000 ? "#FAF0DC" : "#F4BEBE" }; */
+    background-color: #C7E5DF;
+    margin: 0;
   }
+`
+
+const StyledOverlay = styled.div.attrs(props => ({
+  style: {
+    height: (props.value / 2000 + "%"),
+  },
+}))`
+  width: 100%;
+  background-color: #00d32361;
+  transition: 0.4s height;
+  filter: blur(10px);
+  position: fixed;
+  bottom: 0;
+  z-index: -1;
 `
 
 const TimeSection = styled.div`
@@ -198,7 +213,9 @@ export const App = () => {
         <StyledFooter>
           <p><small>&copy; Jeremy Carder 2023 &bull; Check out the source on <a href="https://github.com">GitHub</a></small></p>
         </StyledFooter>
+
       </Wrapper>
+      <StyledOverlay value={annually} />
     </>
   )
 }
