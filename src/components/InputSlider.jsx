@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import {useEffect, useState} from 'preact/hooks'
 
 const StyledSlider = styled.input`
     max-width: 200px;
