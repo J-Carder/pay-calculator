@@ -30,6 +30,7 @@ const StyledContainer = styled.div`
 
 const StyledNumberInput = styled.input`
     text-align: right;
+    border-radius: 5px;
 
     ::-webkit-inner-spin-button {
         opacity: 1;

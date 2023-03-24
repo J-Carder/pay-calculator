@@ -1,12 +1,16 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import {useEffect, useState} from 'preact/hooks';
 import { InputSlider } from './components/InputSlider';
+import SlideToggle from 'react-slide-toggle';
 
 // styles to be applied globally (ie. body)
 const GlobalStyle = createGlobalStyle`
 
-  body {
+  * {
     box-sizing: border-box;
+  }
+
+  body {
     /* background-color: ${props => props.value > 40000 ? "#C7E5DF" : props.value > 20000 ? "#FAF0DC" : "#F4BEBE" }; */
     background-color: #C7E5DF;
     margin: 0;
@@ -31,26 +35,55 @@ const StyledOverlay = styled.div.attrs(props => ({
 const StyledSection = styled.div`
   border: 5px solid black;
   padding: 10px;
-  margin: 10px;
+  margin: 10px 0 10px 0;
   box-shadow: 0 0 3px black;
   background-color: white;
   border-radius: 5px;
+
+  margin-bottom: ${props => props.space ? "2em" : ""};
 `
 
-const CenteredH2 = styled.h2`
+const StyledH2 = styled.h2`
   padding: 0;
   margin: 0;
-  margin-left: 10px;
 `
 
 const StyledFooter = styled.footer`
   text-align: center;
+  margin-bottom: 12em;
+  margin-top: 3em;
 `
 
 const Wrapper = styled.div`
   margin: 0 auto;
   max-width: 600px;
   font-family: sans-serif;
+`
+
+const StyledDT = styled.dt`
+  font-weight: bold;
+  margin: 10px 0 10px 0;
+`
+
+const StyledBox = styled.span`
+  padding: 3px;
+  border: 2px solid black;
+  background-color: #d5d5d5;
+  border-radius: 5px;
+`
+
+const StyledDD = styled.dd`
+`
+
+const StyledDL = styled.dl`
+`
+
+const StyledDiv = styled.div`
+`
+
+const StyledA = styled.a`
+  color: black;
+  font-weight: bold;
 `
 
 export const App = () => {
@@ -92,7 +125,6 @@ export const App = () => {
   let [hoursPerDay, setHoursPerDay] = useState(DEFAULT_HOURS_PER_DAY);
   let [daysPerWeek, setDaysPerWeek] = useState(DEFAULT_DAYS_PER_WEEK);
 
-
   let [hourly, setHourly] = useState(0);
   let [daily, setDaily] = useState(0);
   let [weekly, setWeekly] = useState(0);
@@ -107,11 +139,11 @@ export const App = () => {
     setPay(30, HOURLY_NAME);
   }, [])
 
-
   const roundToTwoDecimals = (num) => {
     return Math.round(num * 100) / 100;
   }
 
+  // update all pay fields in app
   const updateFields = (hoursPerDay, daysPerWeek, hourlyValue) => {
     setDaily(roundToTwoDecimals(hourlyValue * hoursPerDay));
     setWeekly(roundToTwoDecimals(hourlyValue * hoursPerDay * daysPerWeek));
@@ -124,7 +156,9 @@ export const App = () => {
 
   // set all payment fields
   const setPay = (pay, name) => {
-    let hourlyValue; 
+    let hourlyValue;
+
+    // convert pay to hourly value depending on name
     switch (name) {
       case HOURLY_NAME:
         hourlyValue = pay;
@@ -152,10 +186,12 @@ export const App = () => {
         break;
     }
 
+    // update hourly value and then all fields
     setHourly(roundToTwoDecimals(hourlyValue));
     updateFields(hoursPerDay, daysPerWeek, hourlyValue);
   }
 
+  // set time fields
   const setTime = (time, name) => {
 
     switch (name) {
@@ -178,14 +214,18 @@ export const App = () => {
 
         <h1>Pay Calculator &#128184;</h1>
 
-        <CenteredH2>Time &#128338;</CenteredH2>
+        <StyledDiv>
+          <p>Simply fill out or modify a field and watch all other values reactively change to give you a comprehensive view of your wage/salary.</p>
+        </StyledDiv>
+
+        <StyledH2>Time &#128338;</StyledH2>
         <StyledSection>
           <InputSlider name={HOURS_PER_DAY_NAME} min={1} max={HOURS_IN_DAY} sliderMin={1} sliderMax={HOURS_IN_DAY} valueChange={setTime} value={hoursPerDay} />
           <InputSlider name={DAYS_PER_WEEK} min={1} max={DAYS_IN_WEEK} sliderMin={1} sliderMax={DAYS_IN_WEEK} valueChange={setTime} value={daysPerWeek}/>
         </StyledSection>
 
-        <CenteredH2>Pay &#128176;</CenteredH2>
-        <StyledSection>
+        <StyledH2>Pay &#128176;</StyledH2>
+        <StyledSection space>
           <InputSlider name={HOURLY_NAME} dollar sliderMax={HOURLY_SLIDER_MAX} valueChange={setPay} value={hourly}/>
           <InputSlider name={DAILY_NAME} dollar sliderMax={DAILY_SLIDER_MAX} sliderStep={10} valueChange={setPay} value={daily}/>
           <InputSlider name={WEEKLY_NAME} dollar sliderMax={WEEKLY_SLIDER_MAX} sliderStep={10} valueChange={setPay} value={weekly}/>
@@ -196,8 +236,47 @@ export const App = () => {
           <InputSlider name={ANNUALLY_NAME} dollar sliderMax={ANNUALLY_SLIDER_MAX} sliderStep={1000} valueChange={setPay} value={annually}/>
         </StyledSection>
 
+        <SlideToggle> 
+          {({toggle, setCollapsibleElement}) => ( 
+
+            <StyledDiv>
+              
+              <StyledH2 onClick={toggle}>Definitions</StyledH2>
+
+              <StyledDL ref={setCollapsibleElement}>
+                <StyledDT><StyledBox>{HOURS_PER_DAY_NAME}</StyledBox></StyledDT>
+                <StyledDD>The hours worked per day, this affects everything other than the hourly field</StyledDD>
+                <StyledDT><StyledBox>{DAYS_PER_WEEK}</StyledBox></StyledDT>
+                <StyledDD>The days worked per week, this affects everything other than the hourly and daily fields</StyledDD>
+
+                <StyledDT><StyledBox>{HOURLY_NAME}</StyledBox></StyledDT>
+                <StyledDD>The pay per hour, what every other pay field is based off</StyledDD>
+                <StyledDT><StyledBox>{DAILY_NAME}</StyledBox></StyledDT>
+                <StyledDD>The pay per day, <code>{HOURLY_NAME} &times; {HOURS_PER_DAY_NAME}</code></StyledDD>
+                <StyledDT><StyledBox>{WEEKLY_NAME}</StyledBox></StyledDT>
+                <StyledDD>The pay per week, <code>{DAILY_NAME} &times; {DAYS_PER_WEEK}</code></StyledDD>
+                <StyledDT><StyledBox>{BIWEEKLY_NAME}</StyledBox></StyledDT>
+                <StyledDD>The pay every two weeks, <code>{BIWEEKLY_IN_MONTH} &times; {WEEKLY_NAME}</code></StyledDD>
+                <StyledDT><StyledBox>{SEMIMONTHLY_NAME}</StyledBox></StyledDT>
+                <StyledDD>Similar to {BIWEEKLY_NAME}, done twice a month, usually on the 15th and the final day of the month, <code>{ANNUALLY_NAME} / {SEMIMONTHS_IN_YEAR}</code></StyledDD>
+                <StyledDT><StyledBox>{MONTHLY_NAME}</StyledBox></StyledDT>
+                <StyledDD>The pay per month, <code>{ANNUALLY_NAME} / {MONTHS_IN_YEAR}</code></StyledDD>
+                <StyledDT><StyledBox>{QUARTERLY_NAME}</StyledBox></StyledDT>
+                <StyledDD>The pay per quarter year, <code>{ANNUALLY_NAME} / {QUARTERS_IN_YEAR}</code></StyledDD>
+                <StyledDT><StyledBox>{ANNUALLY_NAME}</StyledBox></StyledDT>
+                <StyledDD>The pay per year, <code>{WEEKLY_NAME} &times; {WEEKS_IN_YEAR}</code></StyledDD>
+              </StyledDL>
+            </StyledDiv>
+          )}
+        </SlideToggle> 
+
+        <StyledDiv>
+          <StyledH2>More</StyledH2>
+          <p>For more info check out <StyledA href="">my post about this app</StyledA>.</p>
+        </StyledDiv>
+
         <StyledFooter>
-          <p><small>&copy; Jeremy Carder 2023 &bull; Check out the source on <a href="https://github.com">GitHub</a></small></p>
+          <p><small>&copy; Jeremy Carder 2023 &bull; Check out the source on <StyledA href="https://github.com">GitHub</StyledA></small></p>
         </StyledFooter>
 
       </Wrapper>
