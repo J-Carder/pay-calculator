@@ -1,4 +1,6 @@
-import styled from "styled-components"
+import styled from "styled-components";
+import dollar from "../assets/dollar.svg";
+
 
 const StyledSlider = styled.input`
     max-width: 200px;
@@ -34,12 +36,12 @@ const StyledNumberInput = styled.input`
         margin-left: 5px;
     }
 
-    ${props => props.dollar ? " \
-        background-image: url(\"/dollar.svg\"); \
+    ${props => props.dollar ? ` \
+        background-image: url(${dollar}); \
         background-position: left center; \
         background-repeat: no-repeat no-repeat; \
         padding-left: 10px; \
-        background-size: 16px; "
+        background-size: 16px; `
         : "" }
 `
 

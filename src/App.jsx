@@ -1,6 +1,6 @@
-import styled, { createGlobalStyle } from 'styled-components'
-import {useEffect, useState} from 'preact/hooks'
-import { InputSlider } from './components/InputSlider'
+import styled, { createGlobalStyle } from 'styled-components';
+import {useEffect, useState} from 'preact/hooks';
+import { InputSlider } from './components/InputSlider';
 
 // styles to be applied globally (ie. body)
 const GlobalStyle = createGlobalStyle`
