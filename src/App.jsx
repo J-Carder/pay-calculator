@@ -276,7 +276,7 @@ export const App = () => {
         </StyledDiv>
 
         <StyledFooter>
-          <p><small>&copy; Jeremy Carder 2023 &bull; Check out the source on <StyledA href="https://github.com">GitHub</StyledA></small></p>
+          <p><small>&copy; Jeremy Carder 2023 &bull; <StyledA href="https://jeremycarder.ca">jeremycarder.ca</StyledA> &bull; Check out the source on <StyledA href="https://github.com">GitHub</StyledA> or <StyledA href="">GitLab</StyledA></small></p>
         </StyledFooter>
 
       </Wrapper>
