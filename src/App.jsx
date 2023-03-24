@@ -2,6 +2,7 @@ import styled, { createGlobalStyle } from 'styled-components'
 import {useEffect, useState} from 'preact/hooks'
 import { InputSlider } from './components/InputSlider'
 
+// styles to be applied globally (ie. body)
 const GlobalStyle = createGlobalStyle`
 
   body {
@@ -11,7 +12,8 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
   }
 `
-
+// greenish overlay that reacts to salary level
+// uses attrs method because height gets changed frequently -> less rerendered classes which is expensive
 const StyledOverlay = styled.div.attrs(props => ({
   style: {
     height: (props.value / 2000 + "%"),
@@ -26,20 +28,13 @@ const StyledOverlay = styled.div.attrs(props => ({
   z-index: -1;
 `
 
-const TimeSection = styled.div`
+const StyledSection = styled.div`
   border: 5px solid black;
   padding: 10px;
   margin: 10px;
   box-shadow: 0 0 3px black;
   background-color: white;
-`
-
-const PaySection = styled.div`
-  border: 5px solid black;
-  padding: 10px;
-  margin: 10px;
-  box-shadow: 0 0 3px black;
-  background-color: white;
+  border-radius: 5px;
 `
 
 const CenteredH2 = styled.h2`
@@ -184,13 +179,13 @@ export const App = () => {
         <h1>Pay Calculator &#128184;</h1>
 
         <CenteredH2>Time &#128338;</CenteredH2>
-        <TimeSection>
+        <StyledSection>
           <InputSlider name={HOURS_PER_DAY_NAME} min={1} max={HOURS_IN_DAY} sliderMin={1} sliderMax={HOURS_IN_DAY} valueChange={setTime} value={hoursPerDay} />
           <InputSlider name={DAYS_PER_WEEK} min={1} max={DAYS_IN_WEEK} sliderMin={1} sliderMax={DAYS_IN_WEEK} valueChange={setTime} value={daysPerWeek}/>
-        </TimeSection>
+        </StyledSection>
 
         <CenteredH2>Pay &#128176;</CenteredH2>
-        <PaySection>
+        <StyledSection>
           <InputSlider name={HOURLY_NAME} dollar sliderMax={HOURLY_SLIDER_MAX} valueChange={setPay} value={hourly}/>
           <InputSlider name={DAILY_NAME} dollar sliderMax={DAILY_SLIDER_MAX} sliderStep={10} valueChange={setPay} value={daily}/>
           <InputSlider name={WEEKLY_NAME} dollar sliderMax={WEEKLY_SLIDER_MAX} sliderStep={10} valueChange={setPay} value={weekly}/>
@@ -199,7 +194,7 @@ export const App = () => {
           <InputSlider name={MONTHLY_NAME} dollar sliderMax={MONTHLY_SLIDER_MAX} sliderStep={100} valueChange={setPay} value={monthly}/>
           <InputSlider name={QUARTERLY_NAME} dollar sliderMax={QUARTERLY_SLIDER_MAX} sliderStep={100} valueChange={setPay} value={quarterly}/>
           <InputSlider name={ANNUALLY_NAME} dollar sliderMax={ANNUALLY_SLIDER_MAX} sliderStep={1000} valueChange={setPay} value={annually}/>
-        </PaySection>
+        </StyledSection>
 
         <StyledFooter>
           <p><small>&copy; Jeremy Carder 2023 &bull; Check out the source on <a href="https://github.com">GitHub</a></small></p>
