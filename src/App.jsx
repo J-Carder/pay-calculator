@@ -250,21 +250,21 @@ export const App = () => {
                 <StyledDD>The days worked per week, this affects everything other than the hourly and daily fields</StyledDD>
 
                 <StyledDT><StyledBox>{HOURLY_NAME}</StyledBox></StyledDT>
-                <StyledDD>The pay per hour, what every other pay field is based off</StyledDD>
+                <StyledDD>The pay in dollars per hour, what every other pay field is based off</StyledDD>
                 <StyledDT><StyledBox>{DAILY_NAME}</StyledBox></StyledDT>
-                <StyledDD>The pay per day, <code>{HOURLY_NAME} &times; {HOURS_PER_DAY_NAME}</code></StyledDD>
+                <StyledDD>The pay in dollars per day, <code>{HOURLY_NAME} &times; {HOURS_PER_DAY_NAME}</code></StyledDD>
                 <StyledDT><StyledBox>{WEEKLY_NAME}</StyledBox></StyledDT>
-                <StyledDD>The pay per week, <code>{DAILY_NAME} &times; {DAYS_PER_WEEK}</code></StyledDD>
+                <StyledDD>The pay in dollars per week, <code>{DAILY_NAME} &times; {DAYS_PER_WEEK}</code></StyledDD>
                 <StyledDT><StyledBox>{BIWEEKLY_NAME}</StyledBox></StyledDT>
-                <StyledDD>The pay every two weeks, <code>{BIWEEKLY_IN_MONTH} &times; {WEEKLY_NAME}</code></StyledDD>
+                <StyledDD>The pay in dollars every two weeks, <code>{BIWEEKLY_IN_MONTH} &times; {WEEKLY_NAME}</code></StyledDD>
                 <StyledDT><StyledBox>{SEMIMONTHLY_NAME}</StyledBox></StyledDT>
-                <StyledDD>Similar to {BIWEEKLY_NAME}, done twice a month, usually on the 15th and the final day of the month, <code>{ANNUALLY_NAME} / {SEMIMONTHS_IN_YEAR}</code></StyledDD>
+                <StyledDD>The pay in dollars per semi-month. A semi-month pay period is typically done once half way through the month and again at the end of the month (similar to {BIWEEKLY_NAME}) <code>{ANNUALLY_NAME} / {SEMIMONTHS_IN_YEAR}</code></StyledDD>
                 <StyledDT><StyledBox>{MONTHLY_NAME}</StyledBox></StyledDT>
-                <StyledDD>The pay per month, <code>{ANNUALLY_NAME} / {MONTHS_IN_YEAR}</code></StyledDD>
+                <StyledDD>The pay in dollars per month, <code>{ANNUALLY_NAME} / {MONTHS_IN_YEAR}</code></StyledDD>
                 <StyledDT><StyledBox>{QUARTERLY_NAME}</StyledBox></StyledDT>
-                <StyledDD>The pay per quarter year, <code>{ANNUALLY_NAME} / {QUARTERS_IN_YEAR}</code></StyledDD>
+                <StyledDD>The pay in dollars per quarter year, <code>{ANNUALLY_NAME} / {QUARTERS_IN_YEAR}</code></StyledDD>
                 <StyledDT><StyledBox>{ANNUALLY_NAME}</StyledBox></StyledDT>
-                <StyledDD>The pay per year, <code>{WEEKLY_NAME} &times; {WEEKS_IN_YEAR}</code></StyledDD>
+                <StyledDD>The pay in dollars per year, <code>{WEEKLY_NAME} &times; {WEEKS_IN_YEAR}</code></StyledDD>
               </StyledDL>
             </StyledDiv>
           )}
@@ -272,7 +272,7 @@ export const App = () => {
 
         <StyledDiv>
           <StyledH2>More</StyledH2>
-          <p>For more info check out <StyledA href="">my post about this app</StyledA>.</p>
+          <p><StyledA href="">See the project post.</StyledA>.</p>
         </StyledDiv>
 
         <StyledFooter>
