@@ -272,11 +272,12 @@ export const App = () => {
 
         <StyledDiv>
           <StyledH2>More</StyledH2>
-          <p><StyledA href="">See the project post.</StyledA>.</p>
+          <p>See the <StyledA href="">project post.</StyledA>.</p>
+          <p>Made by <StyledA href="">Jeremy Carder</StyledA>.</p>
         </StyledDiv>
 
         <StyledFooter>
-          <p><small>&copy; Jeremy Carder 2023 &bull; <StyledA href="https://jeremycarder.ca">jeremycarder.ca</StyledA> &bull; Check out the source on <StyledA href="https://github.com">GitHub</StyledA> or <StyledA href="">GitLab</StyledA></small></p>
+          <p><small>&copy; Jeremy Carder 2023 &bull; Check out the source on <StyledA href="https://github.com">GitHub</StyledA> or <StyledA href="">GitLab</StyledA></small></p>
         </StyledFooter>
 
       </Wrapper>
