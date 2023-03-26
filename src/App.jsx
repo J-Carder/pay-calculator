@@ -207,6 +207,25 @@ export const App = () => {
   }
 
 
+  const getCopyRightYear = () => {
+
+    // year to start from
+    let startYear = 2023;
+
+    let curYear = new Date().getFullYear();
+    let yearString = "";
+
+    if (startYear < curYear) {
+        yearString = startYear.toString() + "-" + curYear.toString();
+    } else {
+        yearString = startYear.toString();
+    }
+
+    return yearString;
+
+  }
+
+
   return (
     <>
       <GlobalStyle value={annually} />
@@ -277,7 +296,7 @@ export const App = () => {
         </StyledDiv>
 
         <StyledFooter>
-          <p><small>&copy; Jeremy Carder 2023 &bull; Check out the source on <StyledA href="https://github.com">GitHub</StyledA> or <StyledA href="">GitLab</StyledA></small></p>
+          <p><small>&copy; Jeremy Carder {getCopyRightYear()} &bull; Check out the source on <StyledA href="https://github.com">GitHub</StyledA> or <StyledA href="">GitLab</StyledA></small></p>
         </StyledFooter>
 
       </Wrapper>
