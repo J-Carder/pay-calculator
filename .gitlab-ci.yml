@@ -8,11 +8,11 @@ pages:
       - node_modules/
   script:
     - npm install
-    - rm -rf dist
+    - rm -rf public
     - npm run build
-    - cp dist/index.html dist/404.html
+    - cp public/index.html public/404.html
   artifacts:
     paths:
-      - dist
+      - public
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
