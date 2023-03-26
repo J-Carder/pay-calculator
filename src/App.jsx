@@ -86,6 +86,15 @@ const StyledA = styled.a`
   font-weight: bold;
 `
 
+const DiscreetA = styled.a`
+  color: black;
+  text-decoration: none;
+
+  :hover {
+    color: black;
+  }
+`
+
 export const App = () => {
 
 
@@ -291,13 +300,12 @@ export const App = () => {
 
         <StyledDiv>
           <StyledH2>More</StyledH2>
-          <p>See the <StyledA href="">project post.</StyledA>.</p>
-          <p>Made by <StyledA href="">Jeremy Carder</StyledA>.</p>
-          <p>Licensed under the GPLv3.</p> 
+          <p>See the <StyledA href="https://jeremycarder.ca/projects/pay-calculator/">project post.</StyledA>.</p>
+          <p>Licensed under the <StyledA href="https://gitlab.com/jcarder/pay-calculator/-/raw/master/LICENSE">GPLv3</StyledA>.</p> 
         </StyledDiv>
 
         <StyledFooter>
-          <p><small>&copy; Jeremy Carder {getCopyRightYear()} &bull; Check out the source on <StyledA href="https://github.com">GitHub</StyledA> or <StyledA href="">GitLab</StyledA></small></p>
+          <p><small>&copy; Jeremy Carder {getCopyRightYear()} &bull; <StyledA href="https://jeremycarder.ca">jeremycarder.ca</StyledA> &bull; Check out the source on <StyledA href="https://github.com/J-Carder/pay-calculator">GitHub</StyledA> or <StyledA href="https://gitlab.com/jcarder/pay-calculator">GitLab</StyledA></small></p>
         </StyledFooter>
 
       </Wrapper>
