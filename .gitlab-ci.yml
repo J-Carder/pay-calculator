@@ -1,0 +1,18 @@
+image: node:latest
+
+pages:
+  stage: deploy
+  environment: production
+  cache:
+    paths:
+      - node_modules/
+  script:
+    - npm install
+    - rm -rf dist
+    - npm run build
+    - cp dist/index.html dist/404.html
+  artifacts:
+    paths:
+      - dist
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
