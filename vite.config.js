@@ -5,6 +5,7 @@ import preact from '@preact/preset-vite'
 export default defineConfig({
   plugins: [preact()],
   publicDir: "static",
+  base: "/pay-calculator/",
   build: {
     outDir: "public"
   }
