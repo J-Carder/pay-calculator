@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     /* background-color: ${props => props.value > 40000 ? "#C7E5DF" : props.value > 20000 ? "#FAF0DC" : "#F4BEBE" }; */
     background-color: #C7E5DF;
-    margin: 0;
+    margin: 0 10px 0 10px;
   }
 `
 // greenish overlay that reacts to salary level
@@ -293,6 +293,7 @@ export const App = () => {
           <StyledH2>More</StyledH2>
           <p>See the <StyledA href="">project post.</StyledA>.</p>
           <p>Made by <StyledA href="">Jeremy Carder</StyledA>.</p>
+          <p>Licensed under the GPLv3.</p> 
         </StyledDiv>
 
         <StyledFooter>
