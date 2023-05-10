@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     /* background-color: ${props => props.value > 40000 ? "#C7E5DF" : props.value > 20000 ? "#FAF0DC" : "#F4BEBE" }; */
     background-color: #C7E5DF;
-    margin: 0;
+    margin: 0 10px 0 10px;
   }
 `
 // greenish overlay that reacts to salary level
@@ -84,6 +84,15 @@ const StyledDiv = styled.div`
 const StyledA = styled.a`
   color: black;
   font-weight: bold;
+`
+
+const DiscreetA = styled.a`
+  color: black;
+  text-decoration: none;
+
+  :hover {
+    color: black;
+  }
 `
 
 export const App = () => {
@@ -207,6 +216,25 @@ export const App = () => {
   }
 
 
+  const getCopyRightYear = () => {
+
+    // year to start from
+    let startYear = 2023;
+
+    let curYear = new Date().getFullYear();
+    let yearString = "";
+
+    if (startYear < curYear) {
+        yearString = startYear.toString() + "-" + curYear.toString();
+    } else {
+        yearString = startYear.toString();
+    }
+
+    return yearString;
+
+  }
+
+
   return (
     <>
       <GlobalStyle value={annually} />
@@ -272,12 +300,12 @@ export const App = () => {
 
         <StyledDiv>
           <StyledH2>More</StyledH2>
-          <p>See the <StyledA href="">project post.</StyledA>.</p>
-          <p>Made by <StyledA href="">Jeremy Carder</StyledA>.</p>
+          <p>See the <StyledA href="https://jeremycarder.ca/projects/pay-calculator/">project post.</StyledA>.</p>
+          <p>Licensed under the <StyledA href="https://gitlab.com/jcarder/pay-calculator/-/raw/master/LICENSE">GPLv3</StyledA>.</p> 
         </StyledDiv>
 
         <StyledFooter>
-          <p><small>&copy; Jeremy Carder 2023 &bull; Check out the source on <StyledA href="https://github.com">GitHub</StyledA> or <StyledA href="">GitLab</StyledA></small></p>
+          <p><small>&copy; Jeremy Carder {getCopyRightYear()} &bull; <StyledA href="https://jeremycarder.ca">jeremycarder.ca</StyledA> &bull; Check out the source on <StyledA href="https://github.com/J-Carder/pay-calculator">GitHub</StyledA> or <StyledA href="https://gitlab.com/jcarder/pay-calculator">GitLab</StyledA></small></p>
         </StyledFooter>
 
       </Wrapper>
