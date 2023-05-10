@@ -64,7 +64,7 @@ const StyledInputContainer = styled.div`
     }
 `
 
-export const InputSlider = ({ name, min, max, sliderMin, sliderMax, sliderStep, value, valueChange, className, dollar, decimal}) => {
+export const InputSlider = ({ name, min, max, sliderMin, sliderMax, step, value, valueChange, className, dollar, decimal}) => {
 
     return (
 
@@ -73,8 +73,8 @@ export const InputSlider = ({ name, min, max, sliderMin, sliderMax, sliderStep, 
                 {name}
             </StyledP>
             <StyledInputContainer>
-                <StyledNumberInput dollar={dollar} type="number" min={min} max={max} value={decimal ? (Math.round(value * 100) / 100).toFixed(2) : value} onChange={(e) => {valueChange(e.target.value, name)}}/>
-                <StyledSlider type="range" step={sliderStep} min={sliderMin} max={sliderMax} value={value} onChange={(e) => {valueChange(e.target.value, name)}} />
+                <StyledNumberInput dollar={dollar} step={step} type="number" min={min} max={max} value={decimal ? (Math.round(value * 100) / 100).toFixed(2) : value} onChange={(e) => {valueChange(e.target.value, name)}}/>
+                <StyledSlider type="range" step={step} min={sliderMin} max={sliderMax} value={value} onChange={(e) => {valueChange(e.target.value, name)}} />
             </StyledInputContainer>
         </StyledContainer>
     )

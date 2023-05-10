@@ -227,13 +227,13 @@ export const App = () => {
         <StyledH2>Pay &#128176;</StyledH2>
         <StyledSection space>
           <InputSlider name={HOURLY_NAME} dollar sliderMax={HOURLY_SLIDER_MAX} valueChange={setPay} value={hourly}/>
-          <InputSlider name={DAILY_NAME} dollar sliderMax={DAILY_SLIDER_MAX} sliderStep={10} valueChange={setPay} value={daily}/>
-          <InputSlider name={WEEKLY_NAME} dollar sliderMax={WEEKLY_SLIDER_MAX} sliderStep={10} valueChange={setPay} value={weekly}/>
-          <InputSlider name={BIWEEKLY_NAME} dollar sliderMax={BIWEEKLY_SLIDER_MAX} sliderStep={100} valueChange={setPay} value={biweekly}/>
-          <InputSlider name={SEMIMONTHLY_NAME} dollar sliderMax={SEMIMONTHLY_SLIDER_MAX} sliderStep={100} valueChange={setPay} value={semimonthly}/>
-          <InputSlider name={MONTHLY_NAME} dollar sliderMax={MONTHLY_SLIDER_MAX} sliderStep={100} valueChange={setPay} value={monthly}/>
-          <InputSlider name={QUARTERLY_NAME} dollar sliderMax={QUARTERLY_SLIDER_MAX} sliderStep={100} valueChange={setPay} value={quarterly}/>
-          <InputSlider name={ANNUALLY_NAME} dollar sliderMax={ANNUALLY_SLIDER_MAX} sliderStep={1000} valueChange={setPay} value={annually}/>
+          <InputSlider name={DAILY_NAME} dollar sliderMax={DAILY_SLIDER_MAX} step={10} valueChange={setPay} value={daily}/>
+          <InputSlider name={WEEKLY_NAME} dollar sliderMax={WEEKLY_SLIDER_MAX} step={10} valueChange={setPay} value={weekly}/>
+          <InputSlider name={BIWEEKLY_NAME} dollar sliderMax={BIWEEKLY_SLIDER_MAX} step={100} valueChange={setPay} value={biweekly}/>
+          <InputSlider name={SEMIMONTHLY_NAME} dollar sliderMax={SEMIMONTHLY_SLIDER_MAX} step={100} valueChange={setPay} value={semimonthly}/>
+          <InputSlider name={MONTHLY_NAME} dollar sliderMax={MONTHLY_SLIDER_MAX} step={100} valueChange={setPay} value={monthly}/>
+          <InputSlider name={QUARTERLY_NAME} dollar sliderMax={QUARTERLY_SLIDER_MAX} step={100} valueChange={setPay} value={quarterly}/>
+          <InputSlider name={ANNUALLY_NAME} dollar sliderMax={ANNUALLY_SLIDER_MAX} step={1000} valueChange={setPay} value={annually}/>
         </StyledSection>
 
         <SlideToggle> 
